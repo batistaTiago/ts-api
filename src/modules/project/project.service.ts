@@ -1,10 +1,19 @@
-import{ Project, IProject } from './project.interface'
+import { Project, IProject } from './project.interface'
+import { IProjectPhoto } from '../project-photo/project-photo.interface';
+
 const model = require('../../models')
 
 export class ProjectService implements IProject {
-    public id: number
-    public name: string
-    public status: string
+    public projectId: number
+    public titulo: string
+    public gitURL: string
+    public photos: IProjectPhoto[]
+
+    public status?: string
+    public destaque?: boolean
+    public descricao?: string
+    public deployURL?: string
+    public percentageComplete?: number
 
     constructor() {
 
@@ -12,17 +21,44 @@ export class ProjectService implements IProject {
 
     public static async create(user: IProject): Promise<IProject> {
         return model.Project.create(user)
-     }
-    
-    public static async getAll(): Promise<IProject[]>  { 
+    }
+
+    public static async getAll(): Promise<IProject[]> {
         return model.Project.findAll(
-            { order: ['name'] }
+            {
+                order: ['titulo'],
+                include: [{ model: model.ProjectPhoto }]
+            }
         ).then(Project.createProjects)
     }
-    
-    public static async getById(id: number): Promise<IProject> { 
+
+    public static async getFeatured(): Promise<IProject[]> {
+        return model.Project.findAll(
+            {
+                where: { destaque: true },
+                order: ['titulo'],
+                include: [{ model: model.ProjectPhoto }]
+            }
+        ).then(Project.createProjects)
+    }
+
+    public static async getMinor(): Promise<IProject[]> {
+        return model.Project.findAll(
+            {
+                where: { destaque: false },
+                order: ['titulo'],
+                include: [{ model: model.ProjectPhoto }]
+            }
+        ).then(Project.createProjects)
+    }
+
+    public static async getById(id: number): Promise<IProject> {
         return model.Project.findOne(
-            { where: { id } }
+            {
+                where: { projectId: id },
+                order: ['titulo'],
+                include: [{ model: model.ProjectPhoto }]
+            }
         ).then(Project.createProject)
     }
 

@@ -24,21 +24,23 @@ class Routes {
 
 
         /* rotas de usuario */
-        app.route('/api/users/all').get(this.userRouter.index)
         app.route('/api/users/create').post(this.userRouter.create)
+        app.route('/api/users/all').get(this.userRouter.index)
+
+        /* apenas um usuário logado pode acessar as rotas abaixo */
+        // app.route('/api/users/all').all(AuthConfig.config().authenticate()).get(this.userRouter.index)
         app.route('/api/users/:id').all(AuthConfig.config().authenticate()).get(this.userRouter.findOne)
         app.route('/api/users/:id/update').all(AuthConfig.config().authenticate()).put(this.userRouter.update)
         app.route('/api/users/:id/delete').all(AuthConfig.config().authenticate()).delete(this.userRouter.findOne)
 
 
-
-
         /* rotas de projeto */
         app.route('/api/projects/all').get(this.projectRouter.index)
-        app.route('/api/projects/:id').get(this.projectRouter.findOne)
+        app.route('/api/projects/all/:id').get(this.projectRouter.findOne)
+        app.route('/api/projects/featured').get(this.projectRouter.findFeatured)
+        app.route('/api/projects/minor').get(this.projectRouter.findMinor)
 
-
-        /* rota de token jwt */
+        /* rota de token de autenticação jwt */
         app.route('/token').post(AuthService.authenticate)
         
     }

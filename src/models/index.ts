@@ -10,6 +10,7 @@ const config = EnvironmentConfig.getSettings();
 const env = config.env || 'development';
 const extension = (env === 'development') ? '.ts' : '.js'
 const db: any = {};
+const modelRelations = require('./relations/relations')
 
 let sequelize;
 if (config.dbURL) {
@@ -36,5 +37,7 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+modelRelations(db)
 
 module.exports = db;

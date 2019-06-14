@@ -9,11 +9,19 @@ export class ProjectRoutes {
         return ProjectController.getAll(request, response)
     }
 
-    public create = (request: Express.Request, response: Express.Response) => { 
-        return ProjectController.createProject(request, response)
-    }
+    // public create = (request: Express.Request, response: Express.Response) => { 
+    //     return ProjectController.createProject(request, response)
+    // }
 
     public findOne = (request: Express.Request, response: Express.Response) => { 
         return ProjectController.getById(request, response)
+    }
+
+    public findFeatured = (request: Express.Request, response: Express.Response) => {
+        return ProjectController.getFeatured(request, response)
+    }
+
+    public findMinor = (request: Express.Request, response: Express.Response) => {
+        return ProjectController.getMinor(request, response)
     }
 }
