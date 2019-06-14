@@ -1,6 +1,6 @@
 import * as Express from 'express'
 import { UserRoutes } from '../../modules/user/user.routes'
-import { ProjectRoutes } from '../../modules/projects/projects.routes'
+import { ProjectRoutes } from '../../modules/project/project.routes'
 import { AuthService } from '../../modules/auth/auth.service'
 import AuthConfig from '../../auth';
 

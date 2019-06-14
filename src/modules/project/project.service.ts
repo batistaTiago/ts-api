@@ -1,4 +1,4 @@
-import{ Project, IProject } from './projects.interface'
+import{ Project, IProject } from './project.interface'
 const model = require('../../models')
 
 export class ProjectService implements IProject {

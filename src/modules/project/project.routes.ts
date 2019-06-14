@@ -1,5 +1,5 @@
 import * as Express from 'express'
-import { ProjectController } from './projects.controller'
+import { ProjectController } from './project.controller'
 
 export class ProjectRoutes {
 

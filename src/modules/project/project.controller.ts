@@ -1,5 +1,5 @@
 import * as Express from 'express'
-import { ProjectService } from './projects.service'
+import { ProjectService } from './project.service'
 import { ResponseManager } from '../../api/managers/response-manager'
 
 export class ProjectController {
