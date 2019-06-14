@@ -50,12 +50,12 @@ export class EnvironmentConfig {
     }
     
     public static getSettings() {
-        if (process.env.NODE_ENV.toLowerCase() === 'development') {
+        // if (process.env.NODE_ENV.toLowerCase() === 'development') {
             return EnvironmentConfig.devConfig
-        } else if (process.env.NODE_ENV.toLowerCase() === 'production') {
-            return EnvironmentConfig.productionConfig
-        } else if (process.env.NODE_ENV.toLowerCase() === 'test') {
-            return EnvironmentConfig.testConfig
-        }
+    //     } else if (process.env.NODE_ENV.toLowerCase() === 'production') {
+    //         return EnvironmentConfig.productionConfig
+    //     } else if (process.env.NODE_ENV.toLowerCase() === 'test') {
+    //         return EnvironmentConfig.testConfig
+    //     }
     }
 }

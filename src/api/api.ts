@@ -2,6 +2,7 @@ import * as Express from 'express'
 import * as BodyParser from 'body-parser'
 import Routes from './routes/routes'
 import AuthConfig from '../auth'
+import * as cors from 'cors'
 
 class Api {
 
@@ -31,8 +32,9 @@ class Api {
         this.express.use(BodyParser.urlencoded({ extended: true }))
         this.express.use(BodyParser.json())
         this.express.use(Api.errorHandler)
+        this.express.use(cors())
 
-        this.express.use(AuthConfig.initialize())
+        this.express.use(AuthConfig.config().initialize())
 
         this.router(this.express)
     }
