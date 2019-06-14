@@ -1,23 +1,28 @@
 import * as Express from 'express'
+import { UserRoutes } from '../../modules/user/user.routes'
+import { AuthService } from '../../modules/auth/auth.service'
+import AuthConfig from '../../auth';
 
 class Routes {
-    constructor(app: Express.Application) {
-        this.getRoutes(app)
+
+    private router: UserRoutes
+
+    constructor() {
+        this.router = new UserRoutes()
     }
 
-    public getRoutes(app: Express.Application) {
-        app.route('/').get(
-            (_, response: Express.Response) => {
-                response.send('Oi!')
-            }
-        )
+    public initRoutes(app: Express.Application) {
 
-        app.route('/:p').get(
-            (request: Express.Request, response: Express.Response) => {
-                response.send('Oi, ' + request.params.p)
-            }
-        )
+        app.route('/api/users/all').get(this.router.index)
+        app.route('/api/users/create').post(this.router.create)
+        app.route('/api/users/:id').all(AuthConfig.authenticate()).get(this.router.findOne)
+        app.route('/api/users/:id/update').all(AuthConfig.authenticate()).put(this.router.update)
+        app.route('/api/users/:id/delete').all(AuthConfig.authenticate()).delete(this.router.findOne)
+
+
+        app.route('/token').post(AuthService.authenticate)
+        
     }
 }
 
-export default Routes
+export default new Routes()
