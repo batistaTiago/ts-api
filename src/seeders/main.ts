@@ -7,6 +7,7 @@ const config = EnvironmentConfig.getSettings()
 
 
 const models = require('../models')
+
 models.sequelize.sync().then(
     () => {
         server.listen(config.serverPort)
