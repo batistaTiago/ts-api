@@ -13,18 +13,7 @@ export class EnvironmentConfig {
         secret: '53cr3t'
     }
 
-    private static productionConfig = {
-        env: 'production',
-        serverPort: process.env.PORT || 3000,
-        db: 'dXUCze4agO',
-        username: 'dXUCze4agO',
-        password: '6GOBCtied9',
-        dialect: 'mysql',
-        dbURL: 'mysql://dXUCze4agO@remotemysql.com:3306/dXUCze4agO',
-        host: 'remotemysql.com',
-        databasePort: 3306,
-        secret: 'ca6a6567c5d3eb55cff99b90fe868dc4'
-    }
+    private static productionConfig = require('./production.env')
     
     private static testConfig = {
         env: 'test',
