@@ -4,7 +4,6 @@ import { EnvironmentConfig } from '../config/env/config'
 
 const server = http.createServer(Api)
 const config = EnvironmentConfig.getSettings()
-const port = process.env.PORT || config.serverPort
 
 const models = require('../models')
 
@@ -25,9 +24,9 @@ console.log('sincronizando sequelize')
 //     }
 // )
 
-server.listen(port)
+server.listen(config.serverPort)
 
 server.on('listening', () => {
-    console.log(`Server rodando na porta ${port}...`)
+    console.log(`Server rodando na porta ${config.serverPort}...`)
 })
 

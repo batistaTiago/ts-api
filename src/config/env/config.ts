@@ -27,7 +27,7 @@ export class EnvironmentConfig {
 
     private static productionConfig = {
         env: 'production',
-        serverPort: 3000,
+        serverPort: process.env.PORT || 3000,
         db: 'db_portfolio',
         username: 'epiz_24054376',
         password: '6rVGM8lEPR68NQc',
