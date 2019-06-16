@@ -9,7 +9,7 @@
 
     "start": "NODE_ENV='production' node ./build/seeders/main.js",
 
-    "start-dev": "NODE_ENV='production' ./node_modules/.bin/ts-node ./src/seeders/main.ts",
+    "start-dev": "NODE_ENV='development' ./node_modules/.bin/ts-node ./src/seeders/main.ts",
     "start-windows": "./node_modules/.bin/ts-node ./src/seeders/main.ts",
     
     "test": "echo \"Error: no test specified\" && exit 1"

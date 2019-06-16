@@ -12,12 +12,7 @@ const extension = (env === 'development') ? '.ts' : '.js'
 const db: any = {};
 const modelRelations = require('./relations/relations')
 
-let sequelize;
-if (config.dbURL) {
-  sequelize = new Sequelize(config.dbURL);
-} else {
-  sequelize = new Sequelize(config.db, config.username, config.password, config);
-}
+let sequelize = new Sequelize(config.db, config.username, config.password, config);
 
 fs
   .readdirSync(__dirname)

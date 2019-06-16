@@ -2,37 +2,26 @@ export class EnvironmentConfig {
 
     private static devConfig = {
         env: 'development',
-        serverPort: 3000,
-        db: 'db_portfolio',
-        username: 'root',
-        password: '',
-        dbURL: 'mysql://root@localhost:3306/db_portfolio',
-        host: 'localhost',
+        serverPort: process.env.PORT || 3000,
+        db: 'dXUCze4agO',
+        username: 'dXUCze4agO',
+        password: '6GOBCtied9',
+        dialect: 'mysql',
+        dbURL: 'mysql://dXUCze4agO@remotemysql.com/dXUCze4agO',
+        host: 'remotemysql.com',
         databasePort: 3306,
         secret: '53cr3t'
     }
 
-    // private static productionConfig = {
-    //     env: 'production',
-    //     serverPort: 3000,
-    //     db: 'db_portfolio',
-    //     username: 'epiz_24054376',
-    //     // password: '6rVGM8lEPR68NQc',
-    //     password: '',
-    //     dbURL: 'mysql://root@localhost:3306/db_portfolio',
-    //     host: 'sql203.epizy.com',
-    //     databasePort: 3306,
-    //     secret: 'ca6a6567c5d3eb55cff99b90fe868dc4'
-    // }
-
     private static productionConfig = {
         env: 'production',
         serverPort: process.env.PORT || 3000,
-        db: 'db_portfolio',
-        username: 'epiz_24054376',
-        password: '6rVGM8lEPR68NQc',
-        dbURL: 'mysql://epiz_24054376@sql203.epizy.com:3306/epiz_24054376_db_portfolio',
-        host: 'sql203.epizy.com',
+        db: 'dXUCze4agO',
+        username: 'dXUCze4agO',
+        password: '6GOBCtied9',
+        dialect: 'mysql',
+        dbURL: 'mysql://dXUCze4agO@remotemysql.com:3306/dXUCze4agO',
+        host: 'remotemysql.com',
         databasePort: 3306,
         secret: 'ca6a6567c5d3eb55cff99b90fe868dc4'
     }
@@ -43,6 +32,7 @@ export class EnvironmentConfig {
         serverPort: 3000,
         username: 'root',
         password: '',
+        dialect: 'mysql',
         dbURL: 'mysql://root@localhost:3306/db_portfolio',
         host: 'localhost',
         databasePort: 3306,
