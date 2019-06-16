@@ -19,8 +19,8 @@ export class ProjectService implements IProject {
 
     }
 
-    public static async create(user: IProject): Promise<IProject> {
-        return model.Project.create(user)
+    public static async create(project: IProject): Promise<IProject> {
+        return model.Project.create(project)
     }
 
     public static async getAll(): Promise<IProject[]> {

@@ -50,7 +50,7 @@ export class EnvironmentConfig {
     }
     
     public static getSettings() {
-        const env = process.env.NODE_ENV.toLowerCase() || 'development'
+        const env = (process.env.NODE_ENV || 'development').toLowerCase()
         if (env === 'development') {
             return EnvironmentConfig.devConfig
         } else if (env === 'production') {

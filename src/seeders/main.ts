@@ -5,7 +5,6 @@ import { EnvironmentConfig } from '../config/env/config'
 const server = http.createServer(Api)
 const config = EnvironmentConfig.getSettings()
 
-
 const models = require('../models')
 
 models.sequelize.sync().then(

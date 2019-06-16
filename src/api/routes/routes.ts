@@ -3,15 +3,18 @@ import { UserRoutes } from '../../modules/user/user.routes'
 import { ProjectRoutes } from '../../modules/project/project.routes'
 import { AuthService } from '../../modules/auth/auth.service'
 import AuthConfig from '../../auth';
+import { ContactRoutes } from '../../modules/contact/contact.routes'
 
 class Routes {
 
     private userRouter: UserRoutes
     private projectRouter: ProjectRoutes
+    private contactRouter: ContactRoutes
 
     constructor() {
         this.userRouter = new UserRoutes()
         this.projectRouter = new ProjectRoutes()
+        this.contactRouter = new ContactRoutes()
     }
 
     public initRoutes(app: Express.Application) {
@@ -39,6 +42,10 @@ class Routes {
         app.route('/api/projects/all/:id').get(this.projectRouter.findOne)
         app.route('/api/projects/featured').get(this.projectRouter.findFeatured)
         app.route('/api/projects/minor').get(this.projectRouter.findMinor)
+
+
+        /* rota de contato */
+        app.route('/api/contact').post(this.contactRouter.newContact)
 
         /* rota de token de autenticação jwt */
         app.route('/token').post(AuthService.authenticate)
