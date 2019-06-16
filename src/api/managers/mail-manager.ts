@@ -1,10 +1,12 @@
 import * as NodeMailer from 'nodemailer'
 import { ContactInfo } from '../../modules/contact/contact.info';
+import { EnvironmentConfig } from '../../config/env/config'
 
 export class BTMailer {
     
     private email = 'python.email.smtp.modules@gmail.com'
     private password = 'testingPythonModules!'
+    private settings = EnvironmentConfig.getSettings()
     
     private transporter: NodeMailer.Transporter
     private config = {
@@ -21,7 +23,7 @@ export class BTMailer {
     }
     
     
-    private static instance: BTMailer = undefined
+    private static instance: BTMailer
     
     constructor() {
         this.transporter = NodeMailer.createTransport(this.config)

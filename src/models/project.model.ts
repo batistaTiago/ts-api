@@ -1,5 +1,5 @@
-export default function(sequelize, DataTypes) {
-    const Project = sequelize.define('Project', { 
+export default function (sequelize, DataTypes) {
+    const Project = sequelize.define('Project', {
         projectId: {
             type: DataTypes.INTEGER,
             primaryKey: true,

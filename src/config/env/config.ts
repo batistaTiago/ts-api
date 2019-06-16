@@ -1,51 +1,28 @@
 export class EnvironmentConfig {
-    
-    // private static devConfig = {
-    //     dialect: 'mysql',        
-    //     env: 'development',
-    //     serverPort: 3000,
-    //     driver: "mysql",
-    //     username: "root",
-    //     database: "db_portfolio",
-    //     password: "",
-    //     host: "127.0.0.1",
-    //     port: "3306"
-    // }    
-    
+
     private static devConfig = {
         env: 'development',
+        serverPort: 3000,
         db: 'db_portfolio',
         username: 'root',
         password: '',
-        host: 'localhost',
-        serverPort: 3000,
-        pgPort: 3306,
         dbURL: 'mysql://root@localhost:3306/db_portfolio',
+        host: 'localhost',
+        databasePort: 3306,
         secret: '53cr3t'
     }
 
-    private static productionConfig = {
-        env: 'production',
-        db: 'db_portfolio',
-        username: 'root',
-        password: '',
-        host: 'localhost',
-        serverPort: 3000,
-        pgPort: 3306,
-        dbURL: 'mysql://root@localhost:3306/db_portfolio',
-        secret: '53cr3t'
-    }
+    private static productionConfig = require('./production.env')
     
     private static testConfig = {
         env: 'test',
-        db: 'ts-api-test',
-        dialect: 'postgres',
-        username: 'root',
-        password: 'root',
-        host: 'localhost',
+        db: 'db_portfolio_test',
         serverPort: 3000,
-        pgPort: 5432,
-        dbURL: 'postgres://postgres:root@localhost:5432/ts-api-test',
+        username: 'root',
+        password: '',
+        dbURL: 'mysql://root@localhost:3306/db_portfolio',
+        host: 'localhost',
+        databasePort: 3306,
         secret: '53cr3t'
     }
     
@@ -54,6 +31,7 @@ export class EnvironmentConfig {
         if (env === 'development') {
             return EnvironmentConfig.devConfig
         } else if (env === 'production') {
+            console.log(EnvironmentConfig.productionConfig)
             return EnvironmentConfig.productionConfig
         } else if (env === 'test') {
             return EnvironmentConfig.testConfig
