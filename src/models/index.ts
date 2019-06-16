@@ -8,7 +8,7 @@ const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const config = EnvironmentConfig.getSettings();
 const env = config.env || 'development';
-const extension = (env === 'development') ? '.ts' : '.ts'
+const extension = (env === 'development') ? '.ts' : '.js'
 const db: any = {};
 const modelRelations = require('./relations/relations')
 
