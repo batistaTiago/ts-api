@@ -9,17 +9,24 @@ const models = require('../models')
 
 console.log('sincronizando sequelize')
 
-models.sequelize.sync().then(
-    () => {
-        console.log('sinc deu certo')
-        server.listen(config.serverPort)
+// models.sequelize.sync().then(
+//     () => {
+//         console.log('sinc deu certo')
+//         server.listen(config.serverPort)
 
-        server.on('listening', () => {
-            console.log(`Server rodando na porta ${config.serverPort}...`)
-        })
-        
-        server.on('error', (error: NodeJS.ErrnoException) => {
-            console.log('Houve um erro: ', error)
-        })
-    }
-)
+//         server.on('listening', () => {
+//             console.log(`Server rodando na porta ${config.serverPort}...`)
+//         })
+
+//         server.on('error', (error: NodeJS.ErrnoException) => {
+//             console.log('Houve um erro: ', error)
+//         })
+//     }
+// )
+
+server.listen(config.serverPort)
+
+server.on('listening', () => {
+    console.log(`Server rodando na porta ${config.serverPort}...`)
+})
+

@@ -54,7 +54,6 @@ export class EnvironmentConfig {
         if (env === 'development') {
             return EnvironmentConfig.devConfig
         } else if (env === 'production') {
-            console.log(EnvironmentConfig.productionConfig)
             return EnvironmentConfig.productionConfig
         } else if (env === 'test') {
             return EnvironmentConfig.testConfig
