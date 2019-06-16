@@ -3,13 +3,15 @@ export class EnvironmentConfig {
     private static devConfig = {
         env: 'development',
         serverPort: process.env.PORT || 3000,
+
+        host: 'remotemysql.com',
+        databasePort: 3306,
         db: 'dXUCze4agO',
         username: 'dXUCze4agO',
         password: '6GOBCtied9',
         dialect: 'mysql',
+
         dbURL: 'mysql://dXUCze4agO@remotemysql.com/dXUCze4agO',
-        host: 'remotemysql.com',
-        databasePort: 3306,
         secret: '53cr3t'
     }
 
