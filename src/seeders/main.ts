@@ -28,6 +28,6 @@ console.log('sincronizando sequelize')
 server.listen(port)
 
 server.on('listening', () => {
-    console.log(`Server rodando na porta ${config.serverPort}...`)
+    console.log(`Server rodando na porta ${port}...`)
 })
 
