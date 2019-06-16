@@ -10,7 +10,7 @@ class Api {
 
     constructor(express: Express.Application) {
         this.express = express
-        this.middleWare()
+        this.middleWare() 
     }
 
     private static errorHandler(
