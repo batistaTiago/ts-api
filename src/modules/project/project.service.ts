@@ -1,5 +1,4 @@
 import { Project, IProject } from './project.interface'
-import { IProjectPhoto } from '../project-photo/project-photo.interface';
 
 const model = require('../../models')
 
@@ -7,7 +6,7 @@ export class ProjectService implements IProject {
     public projectId: number
     public titulo: string
     public gitURL: string
-    public photos: IProjectPhoto[]
+    public photos: string[]
 
     public status?: string
     public destaque?: boolean
@@ -29,7 +28,12 @@ export class ProjectService implements IProject {
                 order: ['titulo'],
                 include: [{ model: model.ProjectPhoto }]
             }
-        ).then(Project.createProjects)
+        ).then((data) => {
+            data.forEach(element => {
+                console.log(element.ProjectPhotos)
+            });
+            return Project.createProjects(data)
+        })
     }
 
     public static async getFeatured(): Promise<IProject[]> {
@@ -38,8 +42,15 @@ export class ProjectService implements IProject {
                 where: { destaque: true },
                 order: ['titulo'],
                 include: [{ model: model.ProjectPhoto }]
-            }
-        ).then(Project.createProjects)
+            }).then(Project.createProjects)
+        // ).then((data) => {
+        //     data.forEach(element => {
+        //         element.ProjectPhotos.forEach(photoElement => {
+        //             console.log(photoElement.dataValues.imageURL)
+        //         })
+        //     });
+        //     return Project.createProjects(data)
+        // })
     }
 
     public static async getMinor(): Promise<IProject[]> {
@@ -49,7 +60,12 @@ export class ProjectService implements IProject {
                 order: ['titulo'],
                 include: [{ model: model.ProjectPhoto }]
             }
-        ).then(Project.createProjects)
+        ).then((data) => {
+            data.forEach(element => {
+                console.log(element.ProjectPhotos)
+            });
+            return Project.createProjects(data)
+        })
     }
 
     public static async getById(id: number): Promise<IProject> {

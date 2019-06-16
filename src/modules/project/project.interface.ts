@@ -1,10 +1,8 @@
-import { IProjectPhoto } from "../project-photo/project-photo.interface";
-
 export interface IProject {
     readonly projectId: number
     titulo: string
     gitURL: string
-    photos: IProjectPhoto[]
+    photos: string[]
 
 
     status?: string
@@ -16,8 +14,17 @@ export interface IProject {
 
 
 export class Project {
-    public static createProject({ projectId, titulo, gitURL, photos, status, destaque, descricao, deployURL, percentageComplete }: any): IProject { 
-        return { projectId, titulo, gitURL, photos, status, destaque, descricao, deployURL, percentageComplete }
+    public static createProject(data: any): IProject { 
+        return { 
+            projectId: data.projectId, 
+            titulo: data.titulo, 
+            gitURL: data.gitURL, 
+            photos: data.ProjectPhotos.map((element) => element.imageURL), 
+            status: data.status, 
+            destaque: data.destaque, 
+            descricao: data.descricao, 
+            deployURL: data.deployURL, 
+            percentageComplete: data.percentageComplete }
     }
 
     public static createProjects(data: any[]): IProject[] {
