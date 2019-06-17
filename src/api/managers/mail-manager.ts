@@ -5,14 +5,14 @@ import { EnvironmentConfig } from '../../config/env/config'
 export class BTMailer {
     
     private email = 'python.email.smtp.modules@gmail.com'
-    private password = 'testingPythonModules!'
+    private password = 'test1ngPythonModules!'
     private settings = EnvironmentConfig.getSettings()
     
     private transporter: NodeMailer.Transporter
     private config = {
         host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
+        port: 465,
+        secure: true,
         auth: {
             user: this.email,
             pass: this.password
@@ -54,7 +54,7 @@ export class BTMailer {
 
             return mailDeliveryResult
         } catch (e) {
-            console.log(`houve um erro. LOGIN: ${this.email} - SENHA: ${this.password} `)
+            console.log(`houve um erro. LOGIN: ${this.email} - SENHA: ${this.password} - TRANSPORTER: ${this.transporter} `)
             return null
         }
     }
