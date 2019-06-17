@@ -32,8 +32,8 @@ class Api {
         this.express.use(BodyParser.urlencoded({ extended: true }))
         this.express.use(BodyParser.json())
         this.express.use(Api.errorHandler)
-        // this.express.use(cors({ origin: 'http://localhost:4200' }));
-        this.express.use(cors({ origin: 'https://batistatiago.herokuapp.com' }));
+        this.express.use(cors({ origin: 'http://localhost:4200' }));
+        // this.express.use(cors({ origin: 'https://batistatiago.herokuapp.com' }));
         
 
         this.express.use(AuthConfig.config().initialize())
