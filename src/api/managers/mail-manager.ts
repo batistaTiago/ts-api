@@ -54,7 +54,7 @@ export class BTMailer {
 
             return mailDeliveryResult
         } catch (e) {
-            console.log('result: ', e)
+            console.log(`houve um erro. LOGIN: ${this.email} - SENHA: ${this.password} `)
             return null
         }
     }
