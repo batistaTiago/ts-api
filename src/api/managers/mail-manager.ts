@@ -54,7 +54,7 @@ export class BTMailer {
 
             return mailDeliveryResult
         } catch (e) {
-            console.log(e)
+            console.log('result: ', e)
             return null
         }
     }
