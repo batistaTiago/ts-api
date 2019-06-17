@@ -12,10 +12,10 @@ export class BTMailer {
     private config = {
         host: "smtp.gmail.com",
         port: 587,
-        secure: false, // true for 465, false for other ports
+        secure: false,
         auth: {
-            user: this.email, // generated ethereal user
-            pass: this.password // generated ethereal password
+            user: this.email,
+            pass: this.password
         },
         tls: {
             rejectUnauthorized: false
@@ -38,6 +38,9 @@ export class BTMailer {
     
     
     public async sendMail(data: ContactInfo): Promise<any> {
+
+        console.log(data)
+
         try {
             const mailDeliveryResult = await this.transporter.sendMail({
                 from: data.email,
@@ -47,7 +50,7 @@ export class BTMailer {
                 html: null
             });
 
-            console.log(mailDeliveryResult)
+            console.log('result: ', mailDeliveryResult)
 
             return mailDeliveryResult
         } catch (e) {
