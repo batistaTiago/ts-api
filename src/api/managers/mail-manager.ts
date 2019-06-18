@@ -47,7 +47,7 @@ export class BTMailer {
                 to: 'ekyidag@gmail.com',
                 subject: data.subject,
                 text: data.messageBody,
-                html: `<h2>Nova mensagem de ${data.name} - ${data.email} - ${data.phoneNumber}</h2> <h3>Assunto: ${data.subject}</h3> <p>${data.messageBody}</p>`
+                html: `<h2>Nova mensagem de: ${data.name} - ${data.email} - ${data.phoneNumber}</h2> <h3>Assunto: ${data.subject}</h3> <p>${data.messageBody}</p>`
             });
 
             console.log('result: ', mailDeliveryResult)
