@@ -1,14 +1,14 @@
 export interface IProject {
     readonly projectId: number
     titulo: string
-    gitURL: string
-    photos: string[]
+    gitUrl: string
+    imageUrls: string[]
 
 
     status?: string
     destaque?: boolean
-    descricao?: string
-    deployURL?: string
+    description?: string
+    deployUrl?: string
     percentageComplete?: number
 }
 
@@ -18,13 +18,14 @@ export class Project {
         return { 
             projectId: data.projectId, 
             titulo: data.titulo, 
-            gitURL: data.gitURL, 
-            photos: data.ProjectPhotos.map((element) => element.imageURL), 
+            gitUrl: data.gitUrl, 
+            imageUrls: data.ProjectPhotos.map((element) => element.imageURL), 
             status: data.status, 
             destaque: data.destaque, 
-            descricao: data.descricao, 
-            deployURL: data.deployURL, 
-            percentageComplete: data.percentageComplete }
+            description: data.description, 
+            deployUrl: data.deployUrl, 
+            percentageComplete: data.percentageComplete 
+        }
     }
 
     public static createProjects(data: any[]): IProject[] {

@@ -12,7 +12,7 @@ export default function (sequelize, DataTypes) {
                 notEmpty: true,
             }
         },
-        gitURL: {
+        gitUrl: {
             type: DataTypes.STRING(150),
             allowNull: false,
             validate: {
@@ -30,11 +30,11 @@ export default function (sequelize, DataTypes) {
             type: DataTypes.STRING(32),
             allowNull: true
         },
-        descricao: {
+        description: {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        deployURL: {
+        deployUrl: {
             type: DataTypes.STRING(150),
             allowNull: true
         },

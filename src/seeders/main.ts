@@ -13,6 +13,7 @@ models.sequelize.sync().then(
 
         server.on('listening', () => {
             console.log(`Server rodando na porta ${config.serverPort}...`)
+            console.log(`cross-origin permitidos: ${config.corsOrigin}`)
         })
 
         server.on('error', (error: NodeJS.ErrnoException) => {

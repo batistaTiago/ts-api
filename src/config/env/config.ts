@@ -12,7 +12,8 @@ export class EnvironmentConfig {
         dialect: 'mysql',
 
         dbURL: 'mysql://dXUCze4agO@remotemysql.com/dXUCze4agO',
-        secret: '53cr3t'
+        secret: '53cr3t',
+        corsOrigin: 'http://localhost:4200'
     }
 
     private static productionConfig = {
@@ -27,7 +28,8 @@ export class EnvironmentConfig {
         dialect: 'mysql',
     
         dbURL: 'mysql://dXUCze4agO@remotemysql.com:3306/dXUCze4agO',
-        secret: 'ca6a6567c5d3eb55cff99b90fe868dc4'
+        secret: 'ca6a6567c5d3eb55cff99b90fe868dc4',
+        corsOrigin: 'https://batistatiago.herokuapp.com'
     }
     
     private static testConfig = {
@@ -40,7 +42,8 @@ export class EnvironmentConfig {
         dbURL: 'mysql://root@localhost:3306/db_portfolio',
         host: 'localhost',
         databasePort: 3306,
-        secret: '53cr3t'
+        secret: '53cr3t',
+        corsOrigin: 'http://localhost:4200'
     }
     
     public static getSettings() {

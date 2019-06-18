@@ -3,6 +3,7 @@ import * as BodyParser from 'body-parser'
 import Routes from './routes/routes'
 import AuthConfig from '../auth'
 import * as cors from 'cors'
+import { EnvironmentConfig } from '../config/env/config';
 
 class Api {
 
@@ -32,9 +33,7 @@ class Api {
         this.express.use(BodyParser.urlencoded({ extended: true }))
         this.express.use(BodyParser.json())
         this.express.use(Api.errorHandler)
-        // this.express.use(cors({ origin: 'http://localhost:4200' }));
-        this.express.use(cors({ origin: 'https://batistatiago.herokuapp.com' }));
-        
+        this.express.use(cors({ origin: EnvironmentConfig.getSettings().corsOrigin }))
 
         this.express.use(AuthConfig.config().initialize())
 
