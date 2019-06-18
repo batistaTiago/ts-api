@@ -7,10 +7,11 @@ export class ProjectService implements IProject {
     public titulo: string
     public gitUrl: string
     public imageUrls: string[]
+    public techUsed: string[]
 
     public status?: string
     public destaque?: boolean
-    public descricao?: string
+    public description?: string
     public deployUrl?: string
     public percentageComplete?: number
 
@@ -26,7 +27,19 @@ export class ProjectService implements IProject {
         return model.Project.findAll(
             {
                 order: ['titulo'],
-                include: [{ model: model.ProjectPhoto }]
+                include: [
+                    { 
+                        model: model.ProjectPhoto,
+                        as: 'photos',
+                     },
+                    {
+                        model: model.Tech,
+                        as: 'tech',
+                        // required: false,
+                        // attributes: ['name'],
+                        // through: { attributes: [] }
+                    }
+                ]
             }
         ).then(Project.createProjects)
     }
@@ -36,7 +49,16 @@ export class ProjectService implements IProject {
             {
                 where: { destaque: true },
                 order: ['titulo'],
-                include: [{ model: model.ProjectPhoto }]
+                include: [
+                    { model: model.ProjectPhoto },
+                    {
+                        model: model.Tech,
+                        as: 'tech',
+                        required: false,
+                        attributes: ['name'],
+                        through: { attributes: [] }
+                    }
+                ]
             }).then(Project.createProjects)
     }
 
@@ -45,7 +67,16 @@ export class ProjectService implements IProject {
             {
                 where: { destaque: false },
                 order: ['titulo'],
-                include: [{ model: model.ProjectPhoto }]
+                include: [
+                    { model: model.ProjectPhoto },
+                    {
+                        model: model.Tech,
+                        as: 'tech',
+                        required: false,
+                        attributes: ['name'],
+                        through: { attributes: [] }
+                    }
+                ]
             }
         ).then(Project.createProjects)
     }
@@ -55,7 +86,16 @@ export class ProjectService implements IProject {
             {
                 where: { projectId: id },
                 order: ['titulo'],
-                include: [{ model: model.ProjectPhoto }]
+                include: [
+                    { model: model.ProjectPhoto },
+                    {
+                        model: model.Tech,
+                        as: 'tech',
+                        required: false,
+                        attributes: ['name'],
+                        through: { attributes: [] }
+                    }
+                ]
             }
         ).then(Project.createProject)
     }

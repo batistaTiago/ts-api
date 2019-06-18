@@ -43,6 +43,5 @@ export default function (sequelize, DataTypes) {
             allowNull: true
         }
     })
-
     return Project
 }

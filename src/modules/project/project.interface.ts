@@ -3,6 +3,7 @@ export interface IProject {
     titulo: string
     gitUrl: string
     imageUrls: string[]
+    techUsed: string[]
 
 
     status?: string
@@ -15,11 +16,17 @@ export interface IProject {
 
 export class Project {
     public static createProject(data: any): IProject { 
+
+        const techUsed = data.tech.map((entry) => entry.name)
+
+        const imageUrls = data.ProjectPhotos.map((entry) => entry.imageURL)
+
         return { 
             projectId: data.projectId, 
             titulo: data.titulo, 
             gitUrl: data.gitUrl, 
-            imageUrls: data.ProjectPhotos.map((element) => element.imageURL), 
+            techUsed: techUsed,
+            imageUrls: imageUrls, 
             status: data.status, 
             destaque: data.destaque, 
             description: data.description, 
