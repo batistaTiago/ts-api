@@ -28,16 +28,10 @@ export class ProjectService implements IProject {
             {
                 order: ['titulo'],
                 include: [
-                    { 
-                        model: model.ProjectPhoto,
-                        as: 'photos',
-                     },
+                    { model: model.ProjectPhoto },
                     {
                         model: model.Tech,
-                        as: 'tech',
-                        // required: false,
-                        // attributes: ['name'],
-                        // through: { attributes: [] }
+                        as: 'tech'
                     }
                 ]
             }
@@ -53,10 +47,7 @@ export class ProjectService implements IProject {
                     { model: model.ProjectPhoto },
                     {
                         model: model.Tech,
-                        as: 'tech',
-                        required: false,
-                        attributes: ['name'],
-                        through: { attributes: [] }
+                        as: 'tech'
                     }
                 ]
             }).then(Project.createProjects)
@@ -71,10 +62,7 @@ export class ProjectService implements IProject {
                     { model: model.ProjectPhoto },
                     {
                         model: model.Tech,
-                        as: 'tech',
-                        required: false,
-                        attributes: ['name'],
-                        through: { attributes: [] }
+                        as: 'tech'
                     }
                 ]
             }
@@ -90,10 +78,7 @@ export class ProjectService implements IProject {
                     { model: model.ProjectPhoto },
                     {
                         model: model.Tech,
-                        as: 'tech',
-                        required: false,
-                        attributes: ['name'],
-                        through: { attributes: [] }
+                        as: 'tech'
                     }
                 ]
             }
