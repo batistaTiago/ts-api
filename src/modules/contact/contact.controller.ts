@@ -9,14 +9,21 @@ export class ContactController {
     
         if (contactInfo.isValid()) {
             try {
-                await ContactService.sendEmail(contactInfo)
-                ResponseManager.success(response, 'Contato enviado com sucesso.')
-            } catch {
+                const sucesso = await ContactService.sendEmail(contactInfo)
+                if (sucesso) {
+                    ResponseManager.success(response, 'Contato enviado com sucesso.')
+                    return
+                } else {
+                    throw new Error('Erro desconhecido')
+                }
+            } catch (error) {
+                console.log("houve um erro ao enviar o email: ", error)
                 ResponseManager.error(response, 'Erro ao conectar ao server smtp', 'Ocorreu um erro, por favor tente novamente.')
+
             }
         } else {
             console.log(contactInfo)
-            ResponseManager.error(response, 'Dados invalidos', 'Dados inválidos')
+            ResponseManager.badRequest(response, 'Dados invalidos')
         }
     }
 }
