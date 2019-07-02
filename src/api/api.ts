@@ -4,7 +4,6 @@ import Routes from './routes/routes'
 import AuthConfig from '../auth'
 import * as cors from 'cors'
 import { EnvironmentConfig } from '../config/env/config';
-import * as Secure from 'ssl-express-www';
 
 class Api {
 
@@ -31,7 +30,6 @@ class Api {
     }
 
     public middleWare(): void {
-        this.express.use(Secure.secure)
         this.express.use(BodyParser.urlencoded({ extended: true }))
         this.express.use(BodyParser.json())
         this.express.use(Api.errorHandler)
