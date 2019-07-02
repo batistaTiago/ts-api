@@ -5,7 +5,7 @@ import { EnvironmentConfig } from '../../config/env/config'
 export class BTMailer {
     
     private email = 'python.email.smtp.modules@gmail.com'
-    private password = 'test1ngPythonModules!'
+    private password = 'msjwnpipaxtamhzx'
     private settings = EnvironmentConfig.getSettings()
     
     private transporter: NodeMailer.Transporter
